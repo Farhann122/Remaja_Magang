@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: sincan_app
+    ports:
+      - "8000:80"
+      - "8443:443"
+    volumes:
+      - ./:/app
+      - /app/vendor
+    environment:
+      - APP_NAME=Sincan
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=db_perencanaan
+      - DB_USERNAME=root
+      - DB_PASSWORD=secret
+    depends_on:
+      - mysql
+    networks:
+      - sincan_network
+    
+  mysql:
+    image: mysql:8.0
+    container_name: sincan_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: sincan
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - sincan_network
+
+  # phpMyAdmin untuk manage database
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: sincan_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - sincan_network
+
+volumes:
+  mysql_data:
+
+networks:
+  sincan_network:
+    driver: bridge
