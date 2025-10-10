@@ -1,25 +1,40 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MakController;
+use App\Http\Controllers\BastController;
+use App\Http\Controllers\RapatController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\SatuanController;
-use App\Http\Controllers\MakController;
 use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KodeSuratController;
-use App\Http\Controllers\KlasifikasiSuratController;
-use App\Http\Controllers\AsalSuratController;
-use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\SkoringController;
-use App\Http\Controllers\ArsipPerencanaanController;
-use App\Http\Controllers\SuratMasukPerencanaanController;
+use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\UndanganController;
+use App\Http\Controllers\AsalSuratController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\KodeSuratController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TipeUndanganController;
+use App\Http\Controllers\ArsipPerencanaanController;
+use App\Http\Controllers\KlasifikasiSuratController;
+use App\Http\Controllers\SuratMasukPerencanaanController;
+use App\Http\Controllers\DaftarHadirController;
+use App\Http\Controllers\RekapitulasiController;
+
+
+
 
 
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    
+
+
 
     Route::get('/tahun', [TahunController::class, 'index'])->name('tahun.index');
     Route::get('/tahun/add', [TahunController::class, 'create'])->name('tahun.add');
@@ -109,16 +124,85 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/surat-masuk-perencanaan/{id}/download', [SuratMasukPerencanaanController::class, 'downloadFile'])->name('surat_masuk_perencanaan.download');
     Route::get('/surat-masuk-perencanaan/{id}/download-arsip', [SuratMasukPerencanaanController::class, 'downloadArsipFile'])->name('surat_masuk_perencanaan.download_arsip');
     
+    // route paripurna
+    Route::get('/rapat', [RapatController::class, 'index'])->name('rapat.index');
+    Route::get('/rapat/add', [RapatController::class, 'create'])->name('rapat.add');
+    Route::post('/rapat/add', [RapatController::class, 'store'])->name('rapat.store');
+    Route::get('/rapat/edit/{id}', [RapatController::class, 'edit'])->name('rapat.edit');
+    Route::put('/rapat/{id}', [RapatController::class, 'update'])->name('rapat.update');
+    Route::delete('/rapat/{id}', [RapatController::class, 'destroy'])->name('rapat.destroy');
+
+    // route instansi
+    Route::get('/instansi', [InstansiController::class, 'index'])->name('instansi.index');
+    Route::get('/instansi/add', [InstansiController::class, 'create'])->name('instansi.add');
+    Route::post('/instansi/add', [InstansiController::class, 'store'])->name('instansi.store');
+    Route::get('/instansi/edit/{id}', [InstansiController::class, 'edit'])->name('instansi.edit');
+    Route::put('/instansi/{id}', [InstansiController::class, 'update'])->name('instansi.update');
+    Route::delete('/instansi/{id}', [InstansiController::class, 'destroy'])->name('instansi.destroy');
+
+    // route pengguna
+    Route::get('/pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
+    Route::get('/pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.add');
+    Route::post('/pengguna/add', [PenggunaController::class, 'store'])->name('pengguna.store');
+    Route::get('/pengguna/show/{id}', [PenggunaController::class, 'show'])->name('pengguna.show');
+    Route::get('/pengguna/edit/{id}', [PenggunaController::class, 'edit'])->name('pengguna.edit');
+    Route::put('/pengguna/{id}', [PenggunaController::class, 'update'])->name('pengguna.update');
+    Route::delete('/pengguna/{id}', [PenggunaController::class, 'destroy'])->name('pengguna.destroy');
+
+    // Route bast
+    Route::get('/bast', [BastController::class, 'index'])->name('bast.index');
+    Route::get('/bast/add', [BastController::class, 'create'])->name('bast.add');
+    Route::post('/bast/add', [BastController::class, 'store'])->name('bast.store');
+    Route::get('/bast/edit/{id}', [BastController::class, 'edit'])->name('bast.edit');
+    Route::put('/bast/{id}', [BastController::class, 'update'])->name('bast.update');
+    Route::delete('/bast/{id}', [BastController::class, 'destroy'])->name('bast.destroy');
+    Route::post('bast/{id}/store-bahan', [App\Http\Controllers\BastController::class, 'storeBahan'])->name('bast.storeBahan');
+    Route::resource('bast', App\Http\Controllers\BastController::class)->except(['show']);
+    Route::get('bast/bahan/{bahan_id}/data', [App\Http\Controllers\BastController::class, 'getBahanData'])->name('bast.getBahanData');
+    Route::post('bast/bahan/{bahan_id}/update', [App\Http\Controllers\BastController::class, 'updateBahan'])->name('bast.updateBahan');
+    Route::delete('bast/bahan/{bahan_id}', [App\Http\Controllers\BastController::class, 'destroyBahan'])->name('bast.destroyBahan');
+    
+
+    // route undangan
+    Route::get('/undangan', [UndanganController::class, 'index'])->name('undangan.index');
+    Route::get('/undangan/add', [UndanganController::class, 'create'])->name('undangan.add');
+    Route::post('/undangan/add', [UndanganController::class, 'store'])->name('undangan.store');
+    Route::get('/undangan/show/{id}', [UndanganController::class, 'show'])->name('undangan.show');
+    Route::get('/undangan/edit/{id}', [UndanganController::class, 'edit'])->name('undangan.edit');
+    Route::put('/undangan/{id}', [UndanganController::class, 'update'])->name('undangan.update');
+    Route::delete('/undangan/{id}', [UndanganController::class, 'destroy'])->name('undangan.destroy');
+
+    //route tipe undangan
+    Route::get('/tipe-undangan', [TipeUndanganController::class, 'index'])->name('tipe_undangan.index');
+    Route::get('/tipe-undangan/add', [TipeUndanganController::class, 'create'])->name('tipe_undangan.add');
+    Route::post('/tipe-undangan/add', [TipeUndanganController::class, 'store'])->name('tipe_undangan.store');
+    Route::get('/tipe-undangan/edit/{id}', [TipeUndanganController::class, 'edit'])->name('tipe_undangan.edit');
+    Route::put('/tipe-undangan/{id}', [TipeUndanganController::class, 'update'])->name('tipe_undangan.update');
+    Route::delete('/tipe-undangan/{id}', [TipeUndanganController::class, 'destroy'])->name('tipe_undangan.destroy');
+
+    // Route daftar hadir
+    Route::get('/daftar-hadir/sidang-1-pagi', [DaftarHadirController::class, 'indexSidang1Pagi'])->name('daftar_hadir.sidang1_pagi');
+    Route::put('/daftar-hadir/{id}/kehadiran', [DaftarHadirController::class, 'storeKehadiran'])->name('daftar_hadir.store_kehadiran');
+
+    // route rekapitulasi
+    Route::get('/rekapitulasi/sidang-1', [RekapitulasiController::class, 'indexSidang1'])->name('rekapitulasi.sidang1');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
+// ubah route index menajdi welcome.blade.php
 Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('admin.dashboard.index');
-    }
-    return redirect('/login');
-});
+    return view('welcome');
+})->name('welcome');
+
+// Route::get('/login', function () {
+//     if (Auth::check()) {
+//         return redirect()->route('admin.dashboard.index');
+//     }
+//     return redirect('/login');
+// });
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', function () {
