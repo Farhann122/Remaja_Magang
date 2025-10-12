@@ -45,7 +45,7 @@ a {
 
 /* Geser menu navbar ke kanan */
 .custom-navbar .navbar-nav {
-    margin-left: 50px; /* ubah sesuai kebutuhan */
+    margin-left: 50px;
 }
 
 /* Gaya menu */
@@ -81,7 +81,7 @@ a {
     background-position: center;
     display: flex;
     align-items: center;
-    justify-content: center; /* center text horizontally */
+    justify-content: center;
 }
 
 .hero .overlay {
@@ -105,7 +105,7 @@ a {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.2;
-    white-space: nowrap; /* biar tetap satu baris */
+    white-space: nowrap;
 }
 
 .hero p {
@@ -123,6 +123,27 @@ a {
     font-size: 1.2rem;
 }
 
+/* ====== DROPDOWN CUSTOM ====== */
+.dropdown-menu-dark {
+    background-color: #ffffff !important; /* putih */
+    border: none;
+    border-radius: 10px;
+    padding: 13px 0;
+    text-align: left; /* text rata kiri */
+}
+
+.dropdown-item {
+    color: #000000;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: left; /* text rata kiri */
+}
+
+.dropdown-item:hover {
+    background-color: #f8d210;
+    color: #ffffff;
+}
+
 /* ====== FOOTER ====== */
 footer {
     background-color: #222;
@@ -134,21 +155,550 @@ footer p {
     margin: 0;
     font-size: 14px;
 }
-/* ====== DROPDOWN CUSTOM ====== */
-.dropdown-menu-dark {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 10px;
-    padding: 13px 0;
+
+/* ==========================================================
+   RESPONSIVE FIXED VERSION (Navbar Rapi + Transparan)
+   ========================================================== */
+
+/* Tablet (max-width 992px) */
+@media (max-width: 992px) {
+    .custom-navbar {
+        padding: 10px 0;
+        background: #000;
+    }
+
+    /* Logo dan teks sejajar */
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .navbar-brand img {
+        height: 42px;
+        margin-right: 6px;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .brand-text span:last-child {
+        font-size: 12px;
+        color: #dcdcdc;
+    }
+
+    /* Tombol toggle (hamburger) */
+    .navbar-toggler {
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        padding: 6px 10px;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    /* Menu collapse */
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.95);
+        padding-top: 10px;
+        text-align: left; /* text rata kiri */
+    }
+
+    .nav-link {
+        color: #fff !important;
+        margin: 8px 0;
+        text-align: left; /* text rata kiri */
+        font-weight: 500;
+    }
+
+    .dropdown-menu-dark {
+        background-color: #ffffff;
+        text-align: left; /* text rata kiri */
+        border-radius: 10px;
+    }
+
+    .dropdown-item {
+        color: #000;
+        text-align: left;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f8d210;
+        color: #fff;
+    }
+
+    /* Tombol login di bawah menu */
+    .btn-login {
+        display: block;
+        width: 70%;
+        margin: 10px auto;
+    }
 }
 
-.dropdown-item {
-    color: #000000;
-    font-weight: 500;
+/* Mobile (max-width 576px) */
+@media (max-width: 576px) {
+    /* Tetap sejajar: logo kiri, teks kanan */
+    .navbar-brand {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .navbar-brand img {
+        height: 38px;
+        margin-right: 6px;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .brand-text span:last-child {
+        font-size: 11px;
+        color: #dcdcdc;
+    }
+
+    /* Hamburger kanan atas */
+    .navbar-toggler {
+        position: absolute;
+        right: 15px;
+        top: 12px;
+    }
+
+    /* Menu */
+    .navbar-collapse {
+        background: transparent;
+        text-align: left; /* text rata kiri */
+    }
+
+    .nav-link {
+        font-size: 15px;
+        text-align: left; /* text rata kiri */
+    }
+
+    .dropdown-item {
+        font-size: 14px;
+        padding: 10px 20px;
+        text-align: left;
+    }
+
+    /* Hero section */
+    .hero {
+        height: 80vh;
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        white-space: normal;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
+/* ====== TUJUAN PARLEMEN REMAJA ====== */
+.tujuan-section {
+    background: #ffffff;
+    padding: 80px 0;
+}
+
+.tujuan-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0c3c26;
+    position: relative;
+    display: inline-block;
+}
+
+.tujuan-section h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #f8d210;
+    border-radius: 3px;
+    margin: 10px auto 0;
+}
+
+.card-tujuan {
+    background: #fff200;
+    border: none;
+    border-radius: 20px;
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card-tujuan:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.icon-wrapper img {
+    width: 90px;
+    height: 90px;
+}
+
+.card-tujuan p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Warna tambahan */
+.bg-purple {
+    background-color: #c5b3ff !important;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .card-tujuan {
+        padding: 25px 15px;
+    }
+    .tujuan-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Swiper dots */
+.swiper-pagination-bullet {
+    background: #000 !important;
+    opacity: 0.3;
     transition: all 0.3s ease;
 }
 
-.dropdown-item:hover {
-    background-color: #f8d210;
-    color: #ffffff;
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #f8d210 !important;
+}
+
+/* Button */
+.btn-success {
+    background-color: #000;
+    border: none;
+    padding: 10px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 240px;
+    }
+}
+
+/* ====== SEKILAS PARLEMEN REMAJA ====== */
+.sekilas-section {
+    background: #ffffff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.sekilas-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000000;
+    position: relative;
+    display: inline-block;
+}
+
+.sekilas-section h2::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    background: #f8d210;
+    border-radius: 3px;
+    margin: 10px auto 0;
+}
+
+.sekilas-section p {
+    color: #444;
+    font-size: 1rem;
+    max-width: 750px;
+    margin: 15px auto 40px;
+    line-height: 1.6;
+}
+
+/* Video Container */
+
+.video-frame video {
+    width: 70%;
+    border-radius: 12px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .sekilas-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .sekilas-section p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    .video-frame {
+        padding: 6px;
+    }
+}
+/* ====== FOOTER SECTION ====== */
+
+/* ====== PUBLIKASI SECTION ====== */
+/* ====== PUBLIKASI SECTION ====== */
+.publikasi-section {
+    background: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.publikasi-section h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #000000;
+    position: relative;
+    display: inline-block;
+}
+
+.publikasi-section h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: #f8d210;
+    border-radius: 3px;
+    margin: 10px auto 0;
+}
+
+/* Carousel wrapper */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 60px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+}
+
+.book {
+    flex: 0 0 33.333%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 15px;
+}
+
+.book img {
+    width: 240px;
+    height: 320px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book img:hover {
+    transform: scale(1.05);
+}
+
+.book h5 {
+    margin-top: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.book p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 8px auto 0;
+}
+
+/* Tombol panah */
+.arrow {
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 5;
+}
+
+.arrow:hover {
+    color: #000;
+}
+
+.prev {
+    position: absolute;
+    left: -60px;
+}
+
+.next {
+    position: absolute;
+    right: -60px;
+}
+
+/* Titik pagination */
+/* Titik pagination */
+.pagination-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px; /* jarak dari buku ke titik */
+    margin-bottom: 20px; /* jarak dari titik ke tombol */
+    gap: 10px;
+}
+
+.pagination-dots span {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.pagination-dots span.active {
+    background: #f8d210;
+    transform: scale(1.3);
+}
+
+/* Tombol lihat semua */
+.btn-lihat {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 36px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: 20px; /* jarak aman dari titik */
+}
+
+.btn-lihat:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+}
+
+/* Responsif */
+@media (max-width: 992px) {
+    .book {
+        flex: 0 0 50%;
+    }
+
+    .book img {
+        width: 200px;
+        height: 270px;
+    }
+
+    .prev {
+        left: -35px;
+    }
+
+    .next {
+        right: -35px;
+    }
+
+    .carousel {
+        width: 85%;
+    }
+
+    .pagination-dots {
+        margin-top: 40px;
+    }
+
+    .btn-lihat {
+        margin-top: 45px;
+    }
+}
+
+@media (max-width: 576px) {
+    .book {
+        flex: 0 0 100%;
+    }
+
+    .book img {
+        width: 180px;
+        height: 240px;
+    }
+
+    .carousel {
+        width: 90%;
+    }
+
+    .arrow {
+        font-size: 2.4rem;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+
+    .pagination-dots {
+        margin-top: 35px;
+    }
+
+    .btn-lihat {
+        margin-top: 40px;
+    }
 }

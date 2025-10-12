@@ -194,6 +194,31 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/ketentuanumum', function () {
+    return view('public.ketentuan.umum');
+})->name('public.ketentuan.umum');
+
+Route::get('/ketentuanesai', function () {
+    return view('public.ketentuan.esai');
+})->name('public.ketentuan.esai');
+Route::get('/ketentuankampanye', function () {
+    return view('public.ketentuan.kampanye');
+})->name('public.ketentuan.kampanye');
+Route::get('/pengumumankegiatan', function () {
+    return view('public.pengumuman.kegiatan');
+})->name('public.pengumuman.kegiatan');
+Route::get('/pengumumanseleksi', function () {
+    return view('public.pengumuman.seleksi');
+})->name('public.pengumuman.seleksi');
+
+Route::get('/publikasi', function () {
+    return view('public.publikasi.publikasi');
+})
+->name('public.publikasi.publikasi');
+Route::get('/tentangkami', function () {
+    return view('public.tentang.tentang');
+})->name('public.tentang.tentang');
+
 // Route::get('/login', function () {
 //     if (Auth::check()) {
 //         return redirect()->route('admin.dashboard.index');

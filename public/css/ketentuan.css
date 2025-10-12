@@ -1,0 +1,135 @@
+/* ====== HEADER SECTION ====== */
+.ketentuan-header {
+    position: relative;
+    height: 60vh;
+    background: url("../image/home.jpg") center/cover no-repeat;
+}
+
+.ketentuan-header .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.ketentuan-header .content {
+    position: relative;
+    z-index: 2;
+}
+
+.ketentuan-header h1 {
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.ketentuan-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ====== KONTEN ====== */
+.ketentuan-content {
+    background-color: #f5f6f7;
+}
+
+.ketentuan-content .card {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.ketentuan-content .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.ketentuan-content h3 {
+    color: #000000;
+}
+
+.ketentuan-content ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.ketentuan-content li {
+    margin-bottom: 10px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Poster */
+.poster-img {
+    max-width: 600px;
+    border: 4px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.poster-img:hover {
+    transform: scale(1.03);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .ketentuan-header {
+        height: 45vh;
+    }
+
+    .ketentuan-header h1 {
+        font-size: 2rem;
+    }
+
+    .poster-img {
+        max-width: 100%;
+    }
+
+    .ketentuan-content .card {
+        padding: 25px 18px;
+    }
+}
+/* ====== DOKUMEN SECTION ====== */
+.dokumen-section {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.dokumen-section .list-group-item {
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+
+.dokumen-section .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.dokumen-section h6 {
+    font-size: 1rem;
+}
+
+.dokumen-section .btn {
+    transition: all 0.3s ease;
+}
+
+.dokumen-section .btn:hover {
+    transform: translateY(-3px);
+}
+/* ====== PDF VIEWER ====== */
+.pdf-viewer {
+    display: flex;
+    justify-content: center;
+}
+
+.pdf-frame {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .pdf-frame {
+        height: 400px;
+    }
+}

@@ -1,6 +1,6 @@
 @extends('public.partials.app')
 
-@section('title', 'SIPERDANA')
+@section('title', 'SIPARLEMEN')
 
 @section('content')
   @include('public.partials.hero')

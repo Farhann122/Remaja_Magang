@@ -20,7 +20,7 @@
 
         <!-- Beranda -->
         <li class="nav-item">
-          <a class="nav-link" href="#">Beranda</a>
+          <a class="nav-link" href="/">Beranda</a>
         </li>
 
         <!-- Dropdown: Ketentuan Kegiatan -->
@@ -29,9 +29,9 @@
             Ketentuan Kegiatan
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="ketentuanDropdown">
-            <li><a class="dropdown-item" href="#">Ketentuan Umum</a></li>
-            <li><a class="dropdown-item" href="#">Ketentuan Esai</a></li>
-            <li><a class="dropdown-item" href="#">Ketentuan Video Kampanye</a></li>
+            <li><a class="dropdown-item" href="/ketentuanumum">Ketentuan Umum</a></li>
+            <li><a class="dropdown-item" href="/ketentuanesai">Ketentuan Esai</a></li>
+            <li><a class="dropdown-item" href="/ketentuankampanye">Ketentuan Video Kampanye</a></li>
           </ul>
         </li>
 
@@ -41,14 +41,14 @@
             Pengumuman
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="pengumumanDropdown">
-            <li><a class="dropdown-item" href="#">Surat Pemberitahuan Kegiatan Parlemen Remaja 2025</a></li>
-            <li><a class="dropdown-item" href="#">Surat Pemeberitahuan Hasil Seleksi Peserta Parmelen Remaja 2025</a></li>
-            <li><a class="dropdown-item" href="#">Kegiatan Mendatang</a></li>
+            <li><a class="dropdown-item" href="/pengumumankegiatan">Surat Pemberitahuan Kegiatan Parlemen Remaja 2025</a></li>
+            <li><a class="dropdown-item" href="/pengumumanseleksi">Surat Pemeberitahuan Hasil Seleksi Peserta Parmelen Remaja 2025</a></li>
+            
           </ul>
         </li>
 
         <!-- Menu Lain -->
-        <li class="nav-item"><a class="nav-link" href="informasi">Publikasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="/publikasi">Publikasi</a></li>
         <li class="nav-item"><a class="nav-link" href="tentangkami">Tentang</a></li>
       
 

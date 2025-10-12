@@ -1,0 +1,47 @@
+.ketentuan-header {
+    position: relative;
+    height: 60vh;
+    background: url("../image/home.jpg") center/cover no-repeat;
+}
+
+.ketentuan-header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.ketentuan-header .content {
+    position: relative;
+    z-index: 2;
+}
+
+.tentang-section p {
+    line-height: 1.8;
+}
+
+.visi-misi ul li {
+    margin-bottom: 10px;
+}
+
+.tim-section .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tim-section .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+/* Spacing lebih lega antara gambar & teks */
+.tentang-section .col-lg-6:last-child {
+    padding-left: 100px; /* jarak antara teks dan gambar */
+}
+
+@media (max-width: 992px) {
+    .tentang-section .col-lg-6:last-child {
+        padding-left: 20px; /* reset di tablet & mobile */
+        margin-top: 20px; /* beri jarak vertikal saat stack */
+    }
+}

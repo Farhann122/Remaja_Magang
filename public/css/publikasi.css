@@ -1,0 +1,30 @@
+.publikasi-section {
+  background-color: #f8f9fa;
+}
+
+.publikasi-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.publikasi-card img {
+  height: 350px;
+  object-fit: cover;
+}
+
+.publikasi-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.publikasi-card .card-body {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .publikasi-card img {
+    height: 280px;
+  }
+}
