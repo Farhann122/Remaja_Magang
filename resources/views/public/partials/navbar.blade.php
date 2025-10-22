@@ -22,7 +22,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
         </li>
-
+<li class="nav-item"><a class="nav-link" href="tentangkami">Tentang</a></li>
         <!-- Dropdown: Ketentuan Kegiatan -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="ketentuanDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +49,7 @@
 
         <!-- Menu Lain -->
         <li class="nav-item"><a class="nav-link" href="/publikasi">Publikasi</a></li>
-        <li class="nav-item"><a class="nav-link" href="tentangkami">Tentang</a></li>
+        
       
 
         <!-- Tombol Login -->

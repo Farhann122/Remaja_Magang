@@ -5,15 +5,16 @@
 
     <div id="sidebarMenu" class="sidebar-body">
 
-        <!-- ================== DATA WEBSITE ================== -->
+        <!-- =============
+            ===== DATA WEBSITE ================== -->
         <div class="nav-group show">
             <a href="#" class="nav-label">Data Website</a>
             <ul class="nav nav-sidebar">
                 <li class="nav-item">
                     <a href="" class="nav-link has-sub"><i class="ri-earth-line"></i> <span>Data Website</span></a>
                     <nav class="nav nav-sub">
-                        <a href="#" class="nav-sub-link">Daftar Konten Statis</a>
-                        <a href="#" class="nav-sub-link">Daftar Konten Setting</a>
+            
+                        <a href="{{ route('admin.konten_setting.index') }}" class="nav-sub-link">Daftar Konten Setting</a>
                         <a href="#" class="nav-sub-link">Daftar Poster</a>
                         <a href="#" class="nav-sub-link">Daftar Album Foto</a>
                         <a href="#" class="nav-sub-link">Daftar Publikasi</a>
@@ -29,12 +30,13 @@
                 <li class="nav-item">
                     <a href="" class="nav-link has-sub"><i class="ri-bar-chart-line"></i> <span>Data Skoring</span></a>
                     <nav class="nav nav-sub">
-                        <a href="#" class="nav-sub-link">Daftar Kegiatan</a>
-                        <a href="#" class="nav-sub-link">Daftar Tingkat</a>
-                        <a href="#" class="nav-sub-link">Daftar Partisipasi</a>
-                        <a href="#" class="nav-sub-link">Daftar Kriteria</a>
-                        <a href="#" class="nav-sub-link">Daftar Skoring CV</a>
-                        <a href="#" class="nav-sub-link">Daftar Skoring</a>
+                        <a href="{{ route('admin.kegiatan.index') }}" class="nav-sub-link">Daftar Kegiatan</a>
+                        <a href="{{ route('admin.tingkat.index') }}" class="nav-sub-link">Daftar Tingkat</a>
+                        <a href="{{ route('admin.partisipasi.index') }}" class="nav-sub-link">Daftar Partisipasi</a>
+                        <a href="{{ route('admin.kriteria.index') }}" class="nav-sub-link">Daftar Kriteria</a>
+                        <a href="{{ route('admin.skoring_cv.index') }}" class="nav-sub-link">Daftar Skoring CV</a>
+                        <a href="{{ route('admin.skoring.index') }}" class="nav-sub-link">Daftar Skoring</a>
+                     
                     </nav>
                 </li>
             </ul>

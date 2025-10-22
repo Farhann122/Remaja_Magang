@@ -2,66 +2,51 @@
 
 namespace App\Services;
 
-use App\Models\SkoringModel;
+use App\Models\Skoring;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SkoringService
 {
-    public function getAllActiveSkoring()
+    public function getAllActive()
     {
-        return SkoringModel::where('status', 1)->get();
+        return Skoring::where('status', 1)->orderByDesc('tanggal_input')->get();
     }
 
-    public function getSkoringById($id)
+    public function getById($id)
     {
-        return SkoringModel::findOrFail($id);
+        return Skoring::findOrFail($id);
     }
 
-    public function validateSkoringData(Request $request)
+    public function validateData(Request $request)
     {
         return $request->validate([
-            'operator' => 'required|in:<,<=,=,>=,>',
-            'harga_satuan' => 'required|numeric|min:0',
-            'kategori' => 'required|integer',
-            'umur_ekonomis' => 'required|integer',
-            'jenis_barang' => 'required|integer',
-            'sifat_barang' => 'required|integer',
-            'keterangan' => 'required|string|max:100',
-        ], [
-            'operator.required' => 'Operator harus diisi',
-            'operator.in' => 'Operator harus salah satu dari: <, <=, =, >=, >',
-            'harga_satuan.required' => 'Harga Satuan harus diisi',
-            'harga_satuan.numeric' => 'Harga Satuan harus berupa angka',
-            'harga_satuan.min' => 'Harga Satuan tidak boleh kurang dari 0',
-            'kategori.required' => 'Kategori harus diisi',
-            'kategori.integer' => 'Kategori harus berupa angka',
-            'umur_ekonomis.required' => 'Umur Ekonomis harus diisi',
-            'umur_ekonomis.integer' => 'Umur Ekonomis harus berupa angka',
-            'jenis_barang.required' => 'Jenis Barang harus diisi',
-            'jenis_barang.integer' => 'Jenis Barang harus berupa angka',
-            'sifat_barang.required' => 'Sifat Barang harus diisi',
-            'sifat_barang.integer' => 'Sifat Barang harus berupa angka',
-            'keterangan.required' => 'Keterangan harus diisi',
+            'id_kriteria' => 'required|integer',
+            'deskripsi' => 'required|string|max:255',
+            'bobot' => 'required|numeric',
         ]);
     }
 
-    public function createSkoring(array $data)
+    public function create(array $data)
     {
-        return SkoringModel::create($data);
+        $data['status'] = 1;
+        $data['user_input'] = Auth::user()->name ?? 'system';
+        $data['tanggal_input'] = now();
+
+        return Skoring::create($data);
     }
 
-    public function updateSkoring($id, array $data)
+    public function update($id, array $data)
     {
-        $skoring = SkoringModel::findOrFail($id);
-        $skoring->update($data);
-        return $skoring;
+        $record = Skoring::findOrFail($id);
+        $data['user_update'] = Auth::user()->name ?? 'system';
+        $data['tanggal_update'] = now();
+        $record->update($data);
     }
 
-    public function deleteSkoring($id)
+    public function softDelete($id)
     {
-        $skoring = SkoringModel::findOrFail($id);
-        $skoring->update(['status' => 9]);
-        return $skoring;
+        $record = Skoring::findOrFail($id);
+        $record->update(['status' => 0]);
     }
 }

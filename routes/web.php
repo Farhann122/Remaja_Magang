@@ -22,15 +22,73 @@ use App\Http\Controllers\ArsipPerencanaanController;
 use App\Http\Controllers\KlasifikasiSuratController;
 use App\Http\Controllers\SuratMasukPerencanaanController;
 use App\Http\Controllers\DaftarHadirController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KontenSettingController;
+use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\PartisipasiController;
 use App\Http\Controllers\RekapitulasiController;
-
-
-
-
-
+use App\Http\Controllers\SkoringCvController;
+use App\Http\Controllers\TingkatController;
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+
+
+    Route::get('/tingkat', [TingkatController::class, 'index'])->name('tingkat.index');
+    Route::get('/tingkat/create', [TingkatController::class, 'create'])->name('tingkat.create');
+    Route::post('/tingkat', [TingkatController::class, 'store'])->name('tingkat.store');
+    Route::get('/tingkat/{id}/edit', [TingkatController::class, 'edit'])->name('tingkat.edit');
+    Route::put('/tingkat/{id}', [TingkatController::class, 'update'])->name('tingkat.update');
+    Route::delete('/tingkat/{id}', [TingkatController::class, 'destroy'])->name('tingkat.destroy');
+
+   
+
+
+    Route::get('/partisipasi', [PartisipasiController::class, 'index'])->name('partisipasi.index');
+    Route::get('/partisipasi/create', [PartisipasiController::class, 'create'])->name('partisipasi.create');
+    Route::post('/partisipasi', [PartisipasiController::class, 'store'])->name('partisipasi.store');
+    Route::get('/partisipasi/{id}/edit', [PartisipasiController::class, 'edit'])->name('partisipasi.edit');
+    Route::put('/partisipasi/{id}', [PartisipasiController::class, 'update'])->name('partisipasi.update');
+    Route::delete('/partisipasi/{id}', [PartisipasiController::class, 'destroy'])->name('partisipasi.destroy');
+
+    Route::get('/skoring-cv', [SkoringCvController::class, 'index'])->name('skoring_cv.index');
+    Route::get('/skoring-cv/add', [SkoringCvController::class, 'create'])->name('skoring_cv.create');
+    Route::post('/skoring-cv/add', [SkoringCvController::class, 'store'])->name('skoring_cv.store');
+    Route::get('/skoring-cv/{id}/edit', [SkoringCvController::class, 'edit'])->name('skoring_cv.edit');
+    Route::put('/skoring-cv/{id}', [SkoringCvController::class, 'update'])->name('skoring_cv.update');
+    Route::delete('/skoring-cv/{id}', [SkoringCvController::class, 'destroy'])->name('skoring_cv.destroy');
+
+    Route::get('/skoring', [SkoringController::class, 'index'])->name('skoring.index');
+    Route::get('/skoring/add', [SkoringController::class, 'create'])->name('skoring.create');
+    Route::post('/skoring/add', [SkoringController::class, 'store'])->name('skoring.store');
+    Route::get('/skoring/{id}/edit', [SkoringController::class, 'edit'])->name('skoring.edit');
+    Route::put('/skoring/{id}', [SkoringController::class, 'update'])->name('skoring.update');
+    Route::delete('/skoring/{id}', [SkoringController::class, 'destroy'])->name('skoring.destroy');
+
+     Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
+    Route::get('/kriteria/create', [KriteriaController::class, 'create'])->name('kriteria.create');
+    Route::post('/kriteria', [KriteriaController::class, 'store'])->name('kriteria.store');
+    Route::get('/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('kriteria.edit');
+    Route::put('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+    Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
+
+    Route::get('/konten_setting', [KontenSettingController::class, 'index'])->name('konten_setting.index');
+    Route::get('/konten_setting/create', [KontenSettingController::class, 'create'])->name('konten_setting.create');
+    Route::post('/konten_setting', [KontenSettingController::class, 'store'])->name('konten_setting.store');
+    Route::get('/konten_setting/{id}/edit', [KontenSettingController::class, 'edit'])->name('konten_setting.edit');
+    Route::put('/konten_setting/{id}', [KontenSettingController::class, 'update'])->name('konten_setting.update');    
+    Route::delete('/konten_setting/{id}', [KontenSettingController::class, 'destroy'])->name('konten_setting.destroy');
+
+
+
+
+
+
+
+
+
+
 
     
 
@@ -78,12 +136,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::put('/klasifikasi-surat/{id}', [KlasifikasiSuratController::class, 'update'])->name('klasifikasi_surat.update');
     Route::delete('/klasifikasi-surat/{id}', [KlasifikasiSuratController::class, 'destroy'])->name('klasifikasi_surat.destroy');
 
-    Route::get('/asal-surat', [AsalSuratController::class, 'index'])->name('asal_surat.index');
-    Route::get('/asal-surat/add', [AsalSuratController::class, 'create'])->name('asal_surat.add');
-    Route::post('/asal-surat/add', [AsalSuratController::class, 'store'])->name('asal_surat.store');
-    Route::get('/asal-surat/edit/{id}', [AsalSuratController::class, 'edit'])->name('asal_surat.edit');
-    Route::put('/asal-surat/{id}', [AsalSuratController::class, 'update'])->name('asal_surat.update');
-    Route::delete('/asal-surat/{id}', [AsalSuratController::class, 'destroy'])->name('asal_surat.destroy');
+    Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
+    Route::get('/kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
+    Route::post('/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
+    Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
+    Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
+    Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
 
     Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi.index');
     Route::get('/informasi/create', [InformasiController::class, 'create'])->name('informasi.create');
@@ -124,68 +182,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/surat-masuk-perencanaan/{id}/download', [SuratMasukPerencanaanController::class, 'downloadFile'])->name('surat_masuk_perencanaan.download');
     Route::get('/surat-masuk-perencanaan/{id}/download-arsip', [SuratMasukPerencanaanController::class, 'downloadArsipFile'])->name('surat_masuk_perencanaan.download_arsip');
     
-    // route paripurna
-    Route::get('/rapat', [RapatController::class, 'index'])->name('rapat.index');
-    Route::get('/rapat/add', [RapatController::class, 'create'])->name('rapat.add');
-    Route::post('/rapat/add', [RapatController::class, 'store'])->name('rapat.store');
-    Route::get('/rapat/edit/{id}', [RapatController::class, 'edit'])->name('rapat.edit');
-    Route::put('/rapat/{id}', [RapatController::class, 'update'])->name('rapat.update');
-    Route::delete('/rapat/{id}', [RapatController::class, 'destroy'])->name('rapat.destroy');
-
-    // route instansi
-    Route::get('/instansi', [InstansiController::class, 'index'])->name('instansi.index');
-    Route::get('/instansi/add', [InstansiController::class, 'create'])->name('instansi.add');
-    Route::post('/instansi/add', [InstansiController::class, 'store'])->name('instansi.store');
-    Route::get('/instansi/edit/{id}', [InstansiController::class, 'edit'])->name('instansi.edit');
-    Route::put('/instansi/{id}', [InstansiController::class, 'update'])->name('instansi.update');
-    Route::delete('/instansi/{id}', [InstansiController::class, 'destroy'])->name('instansi.destroy');
-
-    // route pengguna
-    Route::get('/pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
-    Route::get('/pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.add');
-    Route::post('/pengguna/add', [PenggunaController::class, 'store'])->name('pengguna.store');
-    Route::get('/pengguna/show/{id}', [PenggunaController::class, 'show'])->name('pengguna.show');
-    Route::get('/pengguna/edit/{id}', [PenggunaController::class, 'edit'])->name('pengguna.edit');
-    Route::put('/pengguna/{id}', [PenggunaController::class, 'update'])->name('pengguna.update');
-    Route::delete('/pengguna/{id}', [PenggunaController::class, 'destroy'])->name('pengguna.destroy');
-
-    // Route bast
-    Route::get('/bast', [BastController::class, 'index'])->name('bast.index');
-    Route::get('/bast/add', [BastController::class, 'create'])->name('bast.add');
-    Route::post('/bast/add', [BastController::class, 'store'])->name('bast.store');
-    Route::get('/bast/edit/{id}', [BastController::class, 'edit'])->name('bast.edit');
-    Route::put('/bast/{id}', [BastController::class, 'update'])->name('bast.update');
-    Route::delete('/bast/{id}', [BastController::class, 'destroy'])->name('bast.destroy');
-    Route::post('bast/{id}/store-bahan', [App\Http\Controllers\BastController::class, 'storeBahan'])->name('bast.storeBahan');
-    Route::resource('bast', App\Http\Controllers\BastController::class)->except(['show']);
-    Route::get('bast/bahan/{bahan_id}/data', [App\Http\Controllers\BastController::class, 'getBahanData'])->name('bast.getBahanData');
-    Route::post('bast/bahan/{bahan_id}/update', [App\Http\Controllers\BastController::class, 'updateBahan'])->name('bast.updateBahan');
-    Route::delete('bast/bahan/{bahan_id}', [App\Http\Controllers\BastController::class, 'destroyBahan'])->name('bast.destroyBahan');
-    
-
-    // route undangan
-    Route::get('/undangan', [UndanganController::class, 'index'])->name('undangan.index');
-    Route::get('/undangan/add', [UndanganController::class, 'create'])->name('undangan.add');
-    Route::post('/undangan/add', [UndanganController::class, 'store'])->name('undangan.store');
-    Route::get('/undangan/show/{id}', [UndanganController::class, 'show'])->name('undangan.show');
-    Route::get('/undangan/edit/{id}', [UndanganController::class, 'edit'])->name('undangan.edit');
-    Route::put('/undangan/{id}', [UndanganController::class, 'update'])->name('undangan.update');
-    Route::delete('/undangan/{id}', [UndanganController::class, 'destroy'])->name('undangan.destroy');
-
-    //route tipe undangan
-    Route::get('/tipe-undangan', [TipeUndanganController::class, 'index'])->name('tipe_undangan.index');
-    Route::get('/tipe-undangan/add', [TipeUndanganController::class, 'create'])->name('tipe_undangan.add');
-    Route::post('/tipe-undangan/add', [TipeUndanganController::class, 'store'])->name('tipe_undangan.store');
-    Route::get('/tipe-undangan/edit/{id}', [TipeUndanganController::class, 'edit'])->name('tipe_undangan.edit');
-    Route::put('/tipe-undangan/{id}', [TipeUndanganController::class, 'update'])->name('tipe_undangan.update');
-    Route::delete('/tipe-undangan/{id}', [TipeUndanganController::class, 'destroy'])->name('tipe_undangan.destroy');
-
-    // Route daftar hadir
-    Route::get('/daftar-hadir/sidang-1-pagi', [DaftarHadirController::class, 'indexSidang1Pagi'])->name('daftar_hadir.sidang1_pagi');
-    Route::put('/daftar-hadir/{id}/kehadiran', [DaftarHadirController::class, 'storeKehadiran'])->name('daftar_hadir.store_kehadiran');
-
-    // route rekapitulasi
-    Route::get('/rekapitulasi/sidang-1', [RekapitulasiController::class, 'indexSidang1'])->name('rekapitulasi.sidang1');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

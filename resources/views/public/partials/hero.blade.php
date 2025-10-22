@@ -106,7 +106,7 @@
 
         <!-- Buku tambahan (opsional) -->
         <div class="book">
-          <img src="{{ asset('image/buku4.jpg') }}" alt="Buku Esai 2021" />
+          <img src="{{ asset('image/kampanye.jpeg') }}" alt="Buku Esai 2021" />
           <h5>Buku Kumpulan Esai Parlemen Remaja 2021</h5>
           <p>Membangun Generasi Peduli dan Berintegritas di Era Digital</p>
         </div>

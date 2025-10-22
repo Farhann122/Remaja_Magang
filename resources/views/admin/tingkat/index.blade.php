@@ -4,14 +4,14 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <div>
         <ol class="breadcrumb fs-sm mb-1">
-            <li class="breadcrumb-item">Data Skoring</li>
-            <li class="breadcrumb-item active">Daftar Skoring</li>
+            <li class="breadcrumb-item">Data Referensi</li>
+            <li class="breadcrumb-item">Daftar Tingkat</li>
         </ol>
-        <h4 class="main-title mb-0">Daftar Skoring</h4>
+        <h4 class="main-title mb-0">Daftar Tingkat</h4>
     </div>
     <div>
-        <a href="{{ route('admin.skoring.create') }}" class="btn btn-success">
-            <i class="ri-add-line"></i> Tambah Skoring
+        <a href="{{ route('admin.tingkat.create') }}" class="btn btn-success">
+            <i class="ri-add-line"></i> Tambah Tingkat
         </a>
     </div>
 </div>
@@ -19,29 +19,25 @@
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
-            <table id="datatable" class="table table-striped table-bordered align-middle">
+            <table id="datatable" class="table table-striped table-bordered">
                 <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>No</th>
-                        <th>Kriteria</th>
-                        <th>Deskripsi</th>
-                        <th>Bobot</th>
+                        <th>Tingkat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($skoring as $index => $item)
+                    @foreach($tingkat as $index => $item)
                     <tr>
-                        <td class="text-center">{{ $index + 1 }}</td>
-                        <td>{{ $item->kriteria->kriteria ?? '-' }}</td> {{-- relasi ke tabel kriteria --}}
-                        <td>{{ $item->deskripsi }}</td>
-                        <td class="text-center">{{ $item->bobot }}</td>
-                        <td class="text-center">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $item->tingkat }}</td>
+                        <td>
                             <div class="d-flex gap-2 justify-content-center">
-                                <a href="{{ route('admin.skoring.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('admin.tingkat.edit', $item->id) }}" class="btn btn-sm btn-primary">
                                     <i class="ri-edit-line"></i> Edit
                                 </a>
-                                <form action="{{ route('admin.skoring.destroy', $item->id) }}" method="POST" class="form-hapus d-inline-block">
+                                <form action="{{ route('admin.tingkat.destroy', $item->id) }}" method="POST" style="display: inline-block" class="form-hapus">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger btn-hapus">
@@ -61,19 +57,8 @@
 
 @push('scripts')
 <script>
-$(document).ready(function () {
-  if (!$.fn.DataTable.isDataTable('#datatable')) {
-    $('#datatable').DataTable({
-        responsive: true,
-        autoWidth: false,
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
-        }
-    });
-}
-
-
-    $(document).on('click', '.btn-hapus', function (e) {
+$(document).ready(function() {
+    $(document).on('click', '.btn-hapus', function(e) {
         e.preventDefault();
         let form = $(this).closest('form');
         Swal.fire({

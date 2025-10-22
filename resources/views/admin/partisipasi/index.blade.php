@@ -5,13 +5,13 @@
     <div>
         <ol class="breadcrumb fs-sm mb-1">
             <li class="breadcrumb-item">Data Referensi</li>
-            <li class="breadcrumb-item">Daftar Asal/Tujuan Surat</li>
+            <li class="breadcrumb-item">Daftar Partisipasi</li>
         </ol>
-        <h4 class="main-title mb-0">Daftar Asal/Tujuan Surat</h4>
+        <h4 class="main-title mb-0">Daftar Partisipasi</h4>
     </div>
     <div>
-        <a href="{{ route('admin.asal_surat.add') }}" class="btn btn-success">
-            <i class="ri-add-line"></i> Tambah Asal/Tujuan Surat
+        <a href="{{ route('admin.partisipasi.create') }}" class="btn btn-success">
+            <i class="ri-add-line"></i> Tambah Partisipasi
         </a>
     </div>
 </div>
@@ -23,21 +23,21 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Asal/Tujuan Surat</th>
+                        <th>Partisipasi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($asalSurat as $index => $item)
+                    @foreach($partisipasi as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->asal_surat }}</td>
+                        <td>{{ $item->partisipasi }}</td>
                         <td>
                             <div class="d-flex gap-2 justify-content-center">
-                                <a href="{{ route('admin.asal_surat.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('admin.partisipasi.edit', $item->id) }}" class="btn btn-sm btn-primary">
                                     <i class="ri-edit-line"></i> Edit
                                 </a>
-                                <form action="{{ route('admin.asal_surat.destroy', $item->id) }}" method="POST" style="display: inline-block" class="form-hapus">
+                                <form action="{{ route('admin.partisipasi.destroy', $item->id) }}" method="POST" class="form-hapus" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger btn-hapus">

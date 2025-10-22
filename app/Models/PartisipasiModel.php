@@ -6,22 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class SkoringModel extends Model
+class PartisipasiModel extends Model
 {
     use HasFactory;
 
-    protected $connection = 'perencanaan';
-    protected $table = 'skoring';
+    protected $table = 'partisipasi';
 
     protected $fillable = [
-        'operator',
-        'harga_satuan',
-        'kategori',
-        'umur_ekonomis',
-        'jenis_barang',
-        'sifat_barang',
-        'keterangan',
-        'keterangan2',
+        'partisipasi',
         'status',
         'user_input',
         'tanggal_input',
@@ -30,7 +22,6 @@ class SkoringModel extends Model
     ];
 
     public $timestamps = false;
-
 
     protected static function boot()
     {
@@ -46,6 +37,4 @@ class SkoringModel extends Model
             $model->tanggal_update = now();
         });
     }
-
-
 }
