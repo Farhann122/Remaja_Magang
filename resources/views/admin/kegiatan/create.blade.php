@@ -15,15 +15,21 @@
     <div class="card-body">
         <form action="{{ route('admin.kegiatan.store') }}" method="POST">
             @csrf
+
             <div class="mb-4 d-flex align-items-start gap-2">
                 <label for="kegiatan" class="form-label fw-bold" style="width:150px; margin-top:8px;">Kegiatan</label>
                 <div class="d-flex flex-row gap-2">
-                    <input required type="text" class="form-control" id="kegiatan" name="kegiatan"
-                        placeholder="Masukkan Nama Kegiatan" style="width:500px;">
-                    <font style="color:red;">*</font>
+                    <input type="text" name="kegiatan" id="kegiatan" class="form-control @error('kegiatan') is-invalid @enderror"
+                        placeholder="Masukkan nama kegiatan" value="{{ old('kegiatan') }}" style="width:500px;" required>
+                    <span class="text-danger">*</span>
                 </div>
+                @error('kegiatan')
+                    <div class="invalid-feedback d-block ms-2">{{ $message }}</div>
+                @enderror
             </div>
-            <input type="submit" value="Simpan" class="btn btn-primary">
+
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <a href="{{ route('admin.kegiatan.index') }}" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </div>

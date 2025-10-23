@@ -6,15 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Kegiatan extends Model
+class Publikasi extends Model
 {
     use HasFactory;
 
     protected $connection = 'parja';
-    protected $table = 'kegiatan';
+    protected $table = 'publikasi';
 
     protected $fillable = [
-        'kegiatan',
+        'judul',
+        'deskripsi',
+        'file_publikasi_uri',
+        'cover_uri',
+        'status_publikasi',
         'status',
         'user_input',
         'tanggal_input',
@@ -28,14 +32,9 @@ class Kegiatan extends Model
     {
         parent::boot();
 
-        // ✅ Jangan duplikat pengisian user_input kalau service sudah mengisi
         static::creating(function ($model) {
-            if (!$model->user_input) {
-                $model->user_input = Auth::check() ? Auth::user()->username : 'system';
-            }
-            if (!$model->tanggal_input) {
-                $model->tanggal_input = now();
-            }
+            $model->user_input = Auth::check() ? Auth::user()->username : 'system';
+            $model->tanggal_input = now();
         });
 
         static::updating(function ($model) {

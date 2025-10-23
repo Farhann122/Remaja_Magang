@@ -15,9 +15,9 @@
                     <nav class="nav nav-sub">
             
                         <a href="{{ route('admin.konten_setting.index') }}" class="nav-sub-link">Daftar Konten Setting</a>
-                        <a href="#" class="nav-sub-link">Daftar Poster</a>
-                        <a href="#" class="nav-sub-link">Daftar Album Foto</a>
-                        <a href="#" class="nav-sub-link">Daftar Publikasi</a>
+                        <a href="{{ route('admin.poster.index') }}" class="nav-sub-link">Daftar Poster</a>
+                        <a href="{{ route('admin.album_foto.index') }}" class="nav-sub-link">Daftar Album Foto</a>
+                        <a href="{{ route('admin.publikasi.index') }}" class="nav-sub-link">Daftar Publikasi</a>
                     </nav>
                 </li>
             </ul>

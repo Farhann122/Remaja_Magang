@@ -26,9 +26,13 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KontenSettingController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\PartisipasiController;
+use App\Http\Controllers\PosterController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\SkoringCvController;
 use App\Http\Controllers\TingkatController;
+use App\Http\Controllers\PublikasiController;
+
+
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -79,6 +83,29 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/konten_setting/{id}/edit', [KontenSettingController::class, 'edit'])->name('konten_setting.edit');
     Route::put('/konten_setting/{id}', [KontenSettingController::class, 'update'])->name('konten_setting.update');    
     Route::delete('/konten_setting/{id}', [KontenSettingController::class, 'destroy'])->name('konten_setting.destroy');
+
+    Route::get('/poster', [PosterController::class, 'index'])->name('poster.index');
+    Route::get('/poster/create', [PosterController::class, 'create'])->name('poster.create');
+    Route::post('/poster', [PosterController::class, 'store'])->name('poster.store');
+    Route::get('/poster/{id}/edit', [PosterController::class, 'edit'])->name('poster.edit');
+    Route::put('/poster/{id}', [PosterController::class, 'update'])->name('poster.update');
+    Route::delete('/poster/{id}', [PosterController::class, 'destroy'])->name('poster.destroy');
+
+     Route::get('/poster/{id}/lihat', [PosterController::class, 'lihat'])->name('poster.lihat');
+
+    Route::get('/album_foto', [App\Http\Controllers\AlbumFotoController::class, 'index'])->name('album_foto.index');
+    Route::get('/album_foto/create', [App\Http\Controllers\AlbumFotoController::class, 'create'])->name('album_foto.create');
+    Route::post('/album_foto', [App\Http\Controllers\AlbumFotoController::class, 'store'])->name('album_foto.store');
+    Route::get('/album_foto/{id}/edit', [App\Http\Controllers\AlbumFotoController::class, 'edit'])->name('album_foto.edit');
+    Route::put('/album_foto/{id}', [App\Http\Controllers\AlbumFotoController::class, 'update'])->name('album_foto.update');
+    Route::delete('/album_foto/{id}', [App\Http\Controllers\AlbumFotoController::class, 'destroy'])->name('album_foto.destroy'); 
+    
+    Route::get('/publikasi', [App\Http\Controllers\PublikasiController::class, 'index'])->name('publikasi.index');
+    Route::get('/publikasi/create', [App\Http\Controllers\PublikasiController::class, 'create'])->name('publikasi.create');
+    Route::post('/publikasi', [App\Http\Controllers\PublikasiController::class, 'store'])->name('publikasi.store');
+    Route::get('/publikasi/{id}/edit', [App\Http\Controllers\PublikasiController::class, 'edit'])->name('publikasi.edit');
+    Route::put('/publikasi/{id}', [App\Http\Controllers\PublikasiController::class, 'update'])->name('publikasi.update');
+    Route::delete('/publikasi/{id}', [App\Http\Controllers\PublikasiController::class, 'destroy'])->name('publikasi.destroy');
 
 
 

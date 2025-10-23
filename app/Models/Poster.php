@@ -6,15 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Kegiatan extends Model
+class Poster extends Model
 {
     use HasFactory;
 
     protected $connection = 'parja';
-    protected $table = 'kegiatan';
+    protected $table = 'poster';
 
     protected $fillable = [
-        'kegiatan',
+        'judul',
+        'deskripsi',
+        'file_name',
+        'file_type',
+        'file_size',
+        'status_publikasi',
         'status',
         'user_input',
         'tanggal_input',
@@ -28,14 +33,11 @@ class Kegiatan extends Model
     {
         parent::boot();
 
-        // ✅ Jangan duplikat pengisian user_input kalau service sudah mengisi
         static::creating(function ($model) {
-            if (!$model->user_input) {
-                $model->user_input = Auth::check() ? Auth::user()->username : 'system';
-            }
-            if (!$model->tanggal_input) {
-                $model->tanggal_input = now();
-            }
+            $model->user_input = Auth::check() ? Auth::user()->username : 'system';
+            $model->tanggal_input = now();
+            $model->status = 1;
+            $model->status_publikasi = $model->status_publikasi ?? 0;
         });
 
         static::updating(function ($model) {
